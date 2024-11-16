@@ -39,5 +39,26 @@ addBtn.addEventListener("click", (e) => {
   //   console.log(e.target);
   //   console.log(e.target.value);
 
-  const input = document.querySelector("#input");
+  if (!input.value) {
+    alert("Please enter a comment");
+  } else {
+    const input = document.querySelector("#input");
+    const li = document.createElement("li");
+    ul.appendChild(li);
+    const textLi = document.createTextNode(input.value);
+    li.appendChild(textLi);
+    input.value = "";
+    input.focus();
+  }
+});
+
+//? input'un üzerinde iken bir klavye tusuna basilirsa calis
+document.querySelector("#input").addEventListener("keyup", (e) => {
+  console.log(e);
+  console.log(e.code);
+  console.log(e.keyCode);
+  //? Basilan tus Enter ise
+  if (e.code === "Enter") {
+    addBtn.click(); //? add butonun tiklama fonksiyonu calistir.
+  }
 });
